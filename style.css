@@ -1,0 +1,392 @@
+/* --- Global Styles --- */
+:root {
+    --primary-color: #28a745; /* Clean Energy Green */
+    --secondary-color: #007bff; /* Blue for highlights */
+    --background-color-fallback: #f8f9fa; /* Fallback if image fails */
+    --card-background: #ffffff;
+    --text-color: #343a40;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A slightly more modern sans-serif */
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: rgb(227, 226, 226); /* subtle light grey */
+  color: #1f2933;
+  line-height: 1.6;
+}
+
+
+
+
+/* To ensure text is readable over the background image, we'll give content sections a slightly translucent background */
+.header {
+    background-color: rgba(40, 167, 69, 0.9); /* Slightly opaque green */
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.header h1 {
+    font-size: 2.2em;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* --- Main Container --- */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* --- Input Form Section --- */
+.input-section {
+    background: rgba(255, 255, 255, 0.95); /* Slightly translucent white */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-group i {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style for the range slider */
+input[type="range"] {
+    width: 100%;
+}
+
+#budget-value {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Radio buttons for System Preference */
+.system-preference .radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    padding: 8px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: normal;
+    margin: 0;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+
+/* --- Button Style --- */
+#get-recommendation {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#get-recommendation:hover {
+    background-color: #0056b3;
+}
+
+/* --- Results Dashboard --- */
+.results-dashboard {
+    margin-top: 50px;
+}
+
+/* Summary Card */
+.recommendation-summary {
+    text-align: center;
+    background: rgba(0, 123, 255, 0.9); /* Slightly opaque blue */
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.recommendation-summary h3 {
+    opacity: 0.8;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.recommendation-summary h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.impact-card {
+    background: rgba(255, 255, 255, 0.95); /* Slightly translucent white */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.impact-card i {
+    font-size: 30px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.impact-card h4 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.impact-card span {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.impact-card p {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Chart Containers (Take up two columns on larger screens) */
+.chart-container {
+    background: rgba(255, 255, 255, 0.95); /* Slightly translucent white */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.large-chart {
+    grid-column: span 2; /* Make charts wider on desktop */
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .large-chart {
+        grid-column: span 1;
+    }
+    .recommendation-summary h1 {
+        font-size: 2em;
+    }
+}
+
+/* Update your existing CSS (style.css) */
+
+/* Apply position and z-index to all relevant headings */
+h2, h3 {
+    /* Step 1: Set the position */
+    position: relative; 
+    /* The 'relative' position is usually the safest choice if you only need z-index */
+    
+    /* Step 2: Set the z-index */
+    z-index: 10; 
+    /* A value like 10 is typically high enough to layer over standard content */
+}
+
+/* Optional: Ensure the main header content is also above others */
+.header h1, .header p {
+    position: relative;
+    z-index: 11; /* Slightly higher for the title */
+}
+
+/* Ensure the recommendation summary is also layered correctly */
+.recommendation-summary {
+    /* This section already has a background of rgba(0, 123, 255, 0.9) */
+    position: relative;
+    z-index: 9;
+}
+
+/* Other existing CSS selectors for h2 and h3 remain, e.g.: */
+h2 {
+    color: var(--primary-color);    
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+/* --- Budget Status Indicator --- */
+.budget-status-indicator {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: inline-block; /* Makes the background fit the content */
+}
+
+/* Style for when the recommendation is within budget */
+.budget-status-within {
+    background-color: #d4edda; /* Light Green */
+    color: #155724;  /* Dark Green Text */
+    border: 1px solid #c3e6cb;
+}
+
+/* Style for when the recommendation is OVER budget */
+.budget-status-over {
+    background-color: #f8d7da; /* Light Red/Pink */
+    color: #721c24;  /* Dark Red Text */
+    border: 1px solid #f5c6cb;
+}
+
+/* --- Homepage Specific Styles --- */
+
+
+.homepage-content {
+    text-align: center;
+}
+
+.hero-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+}
+
+.hero-section h2 {
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    border-bottom: none;
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.15em;
+    margin-bottom: 30px;
+}
+
+/* Feature Grid for the homepage */
+.feature-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    flex: 1 1 200px; /* Allows cards to wrap nicely */
+    background: #e9f7ef; /* Light green background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.feature-card i {
+    font-size: 36px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.feature-card h4 {
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    padding: 18px 35px;
+    background-color: var(--primary-color); /* Green CTA */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.25em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 6px 10px rgba(40, 167, 69, 0.3);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.cta-button:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+    transform: translateY(-2px);
+}
+
+.small-text {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    color: #6c757d;
+    font-size: 0.9em;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Hybrid Energy Recommender</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Smart Hybrid Renewable Energy Recommender 💡</h1>
+      <p>Your personalized path to Affordable and Clean Energy (SDG 7)</p>
+    </header>
+
+    <main class="container">
+      <section class="input-section">
+        <h2>1. Provide Your Details</h2>
+        <form id="recommendation-form">
+          <div class="form-group">
+            <label for="map"
+              ><i class="fas fa-map-marker-alt"></i> Select Location on
+              Map:</label
+            >
+            <div
+              id="map"
+              style="
+                height: 350px;
+                width: 100%;
+                border-radius: 5px;
+                margin-bottom: 10px;
+              "
+            ></div>
+
+            <input type="hidden" id="latitude" required value="" />
+            <input type="hidden" id="longitude" required value="" />
+
+            <input
+              type="text"
+              id="pac-input"
+              placeholder="Or search for a location..."
+              style="width: 100%; padding: 10px; margin-top: 10px"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="consumption"
+              ><i class="fas fa-bolt"></i> Monthly Energy Consumption
+              (kWh):</label
+            >
+            <input
+              type="number"
+              id="consumption"
+              required
+              placeholder="e.g., 300"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="budget"
+              ><i class="fas fa-wallet"></i> Budget Constraint
+              (Optional):</label
+            >
+            <input
+              type="range"
+              id="budget"
+              min="0"
+              max="1000000"
+              step="10000"
+              value="500000"
+            />
+            <span id="budget-value">₹ 500,000</span>
+          </div>
+
+          <div class="form-group system-preference">
+            <label><i class="fas fa-cogs"></i> System Type Preference:</label>
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="hybrid"
+                name="system_type"
+                value="hybrid"
+                checked
+              />
+              <label for="hybrid">Hybrid (Solar + Wind)</label>
+              <input type="radio" id="solar" name="system_type" value="solar" />
+              <label for="solar">Solar Only</label>
+              <input type="radio" id="wind" name="system_type" value="wind" />
+              <label for="wind">Wind Only</label>
+            </div>
+          </div>
+
+          <button type="submit" id="get-recommendation">
+            Get Recommendation
+          </button>
+        </form>
+      </section>
+
+      <section class="results-dashboard hidden" id="results-dashboard">
+        <h2>2. Your Smart Energy Recommendation</h2>
+        <div class="recommendation-summary">
+          <h3>Optimal Energy Setup</h3>
+          <h1 id="recommended-mix" class="highlight">
+            Hybrid: 70% Solar + 30% Wind
+          </h1>
+          <p id="system-size">Required System Size: 5 kW Solar | 1.5 kW Wind</p>
+
+          <p id="budget-status" class="budget-status-indicator">
+            ✅ Within Budget
+          </p>
+        </div>
+        <div class="dashboard-grid">
+          <div class="impact-card savings">
+            <i class="fas fa-indian-rupee-sign"></i>
+            <h4>Projected Annual Savings</h4>
+            <span id="annual-savings">₹ 45,000</span>
+            <p>Long-term affordability.</p>
+          </div>
+
+          <div class="impact-card co2">
+            <i class="fas fa-cloud-sun"></i>
+            <h4>CO₂ Reduction</h4>
+            <span id="co2-reduction">4,800 kg/year</span>
+            <p>Reduced fossil fuel dependence.</p>
+          </div>
+
+          <div class="impact-card cost">
+            <i class="fas fa-home"></i>
+            <h4>Estimated Setup Cost</h4>
+            <span id="setup-cost">₹ 5,80,000</span>
+            <p>Based on current market rates.</p>
+          </div>
+
+          <div class="chart-container large-chart">
+            <h4>Energy Mix Breakdown</h4>
+            <canvas id="energy-mix-chart"></canvas>
+            <p>Optimized based on location and consumption.</p>
+          </div>
+
+          <div class="chart-container large-chart">
+            <h4>Seasonal Power Generation</h4>
+            <canvas id="seasonal-chart"></canvas>
+            <p>Efficiency across summer, monsoon, and winter.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATcwtM_QBCMcbHehGWuLs5j8Ra-CEwI_c&libraries=places&callback=initMap"
+    ></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </body>
+</html>
