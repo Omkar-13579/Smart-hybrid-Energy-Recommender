@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         resultsDashboard.classList.add('hidden'); 
         
         try {
-            const response = await fetch('http://localhost:3000/api/recommendation', {
+            const response = await fetch('https://smart-hybrid-energy-recommender.onrender.com/api/recommendation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
